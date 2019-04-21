@@ -24,33 +24,23 @@ $ cd build
 ```
 ##### Compile and install
 
-For development reasons it is better to install the client on user space
-instead on the global system. For example you could use in the next
-instructions `path-to-install-folder/` as `~/.local/` in a linux system. If
-you want to install system wide you could use `/usr/local` or `/opt/nextcloud/`.
+:information_source: For development reasons it is better to **install the client on user space** instead on the global system. Mixing up libs/dll's of different version can lead to undefined behavior and crashes. For example you could use in the cmake command ```$PATH``` as ```~/.local/``` in a Linux system. If you want to install system wide you could use ```/usr/local``` or ```/opt/nextcloud/```.
 
-##### Linux
+##### Linux & Mac OS
 
 ```
-$ cmake .. -DCMAKE_INSTALL_PREFIX=~/desktop-install/ -DCMAKE_BUILD_TYPE=Debug -DNO_SHIBBOLETH=1
+$ cmake .. -DCMAKE_INSTALL_PREFIX=$PATH -DCMAKE_BUILD_TYPE=Debug -DNO_SHIBBOLETH=1
 $ make install
 ```
 
 ##### Windows
 
 ```
-$ cmake -G "Visual Studio 15 2017 Win64" .. -DCMAKE_INSTALL_PREFIX=path-to-install-folder/ -DCMAKE_BUILD_TYPE=Debug -DNO_SHIBBOLETH=1 -DPng2Ico_EXECUTABLE=/path-to-install-png2ico/png2ico.exe  -DQTKEYCHAIN_LIBRARY=/path-to-qt5keychain-folder/lib/qt5keychain.lib -DQTKEYCHAIN_INCLUDE_DIR=/path-to-qt5keychain-folder/include/qt5keychain/ -DOPENSSL_ROOT_DIR=/path-to-openssl-folder/ -DOPENSSL_INCLUDE_DIR=path-to-openssl-folder/include -DOPENSSL_LIBRARIES=path-to-openssl-folder/lib
+$ cmake -G "Visual Studio 15 2017 Win64" .. -DCMAKE_INSTALL_PREFIX=$PATH -DCMAKE_BUILD_TYPE=Debug -DNO_SHIBBOLETH=1 -
 $ cmake --build . --config Debug --target install
 ```
 
-##### Mac OS
-
-```
-$ cmake .. -DCMAKE_INSTALL_PREFIX=path-to-install-folder/ -DCMAKE_BUILD_TYPE=Debug -DNO_SHIBBOLETH=1 -DQTKEYCHAIN_LIBRARY=/path-to-qt5keychain-folder/lib/libqt5keychain.dylib -DQTKEYCHAIN_INCLUDE_DIR=/path-to-qt5keychain-folder/include/qt5keychain/ -DOPENSSL_ROOT_DIR=/path-to-openssl-folder/ -DOPENSSL_INCLUDE_DIR=path-to-openssl-folder/include -DOPENSSL_LIBRARIES=path-to-openssl-folder/lib
-$ make install
-```
-
-More detailed instructions can be found at the [Desktop Client Wiki](https://github.com/nextcloud/desktop/wiki).
+:warning: More detailed instructions can be found at the [Desktop Client Wiki](https://github.com/nextcloud/desktop/wiki).
 
 ### :inbox_tray: Where to find binaries to download
 
